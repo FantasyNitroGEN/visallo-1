@@ -14,11 +14,40 @@
     <name>Visallo: GraphPropertyWorker: Plugins</name>
 
     <modules>
+        <module>audio-metadata</module>
+        <module>audio-mp4-encoder</module>
+        <module>audio-ogg-encoder</module>
+        <module>ccextractor</module>
+        <module>clavin</module>
+        <module>csv</module>
+        <module>drewnoakes-image-metadata-extractor</module>
         <module>email-extractor</module>
+        <module>geo-location-resolver</module>
+        <module>geocoder</module>
+        <module>geoip</module>
+        <module>groovy</module>
+        <module>java-code</module>
         <module>mime-type-ontology-mapper</module>
+        <module>opencv-object-detector</module>
+        <module>opennlp-dictionary-extractor</module>
+        <module>opennlp-me-extractor</module>
         <module>phone-number-extractor</module>
+        <module>sphinx</module>
+        <module>subrip-parser</module>
+        <module>subrip-transcript</module>
+        <module>tesseract</module>
         <module>tika-mime-type</module>
         <module>tika-text-extractor</module>
+        <module>translate</module>
+        <module>translator-bing</module>
+        <module>video-audio-extract</module>
+        <module>video-frame-extract</module>
+        <module>video-metadata</module>
+        <module>video-mp4-encoder</module>
+        <module>video-poster-frame</module>
+        <module>video-webm-encoder</module>
+        <module>youtube-transcript</module>
         <module>zipcode-extractor</module>
+        <module>zipcode-resolver</module>
     </modules>
 </project>

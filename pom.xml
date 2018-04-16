@@ -21,9 +21,16 @@
 
     <modules>
         <module>archetype</module>
+        <module>common</module>
         <module>config</module>
         <module>core</module>
+        <module>datasets</module>
+        <module>docker</module>
         <module>dev</module>
+        <module>dist</module>
+        <module>examples</module>
+        <module>integration-test</module>
+        <module>plugin-toggle</module>
         <module>graph-property-worker</module>
         <module>tools</module>
         <module>web</module>

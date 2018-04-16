@@ -14,17 +14,27 @@
     <name>Visallo: Web: Plugins</name>
 
     <modules>
+        <module>admin-import-rdf</module>
+        <module>auth-social</module>
         <module>admin-user-property-auth</module>
         <module>admin-user-property-privileges</module>
         <module>admin-user-tools</module>
         <module>auth-username-only</module>
         <module>auth-username-password</module>
         <module>change-email</module>
+        <module>dev-tools</module>
+        <module>google-analytics</module>
+        <module>analysts-notebook-export</module>
         <module>change-password</module>
         <module>ingest-cloud-s3</module>
+        <module>import-export-workspaces</module>
         <module>graph-product</module>
         <module>map-product</module>
+        <module>opennlp-dictionary-extractor</module>
         <module>structured-ingest</module>
         <module>table</module>
+        <module>terms-of-use</module>
+        <module>requeue</module>
+        <module>zip-code-boundaries</module>
     </modules>
 </project>
