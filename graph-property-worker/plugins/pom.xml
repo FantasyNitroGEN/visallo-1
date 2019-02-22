@@ -17,8 +17,33 @@
         <module>email-extractor</module>
         <module>mime-type-ontology-mapper</module>
         <module>phone-number-extractor</module>
+        <module>translate</module>
+        <module>translator-bing</module>
         <module>tika-mime-type</module>
         <module>tika-text-extractor</module>
         <module>zipcode-extractor</module>
+        <module>audio-metadata</module>
+        <module>audio-mp4-encoder</module>
+        <module>audio-ogg-encoder</module>
+        <module>sphinx</module>
+        <module>video-metadata</module>
+        <module>video-mp4-encoder</module>
+        <module>video-webm-encoder</module>
+        <module>video-poster-frame</module>
+        <module>video-audio-extract</module>
+        <module>video-frame-extract</module>
+        <module>tesseract</module>
+        <module>opencv-object-detector</module>
+        <module>ccextractor</module>
+        <module>subrip-parser</module>
+        <module>subrip-transcript</module>
+        <module>groovy</module>
+        <module>java-code</module>
+        <module>drewnoakes-image-metadata-extractor</module>
+        <module>opennlp-me-extractor</module>
+        <module>opennlp-dictionary-extractor</module>
+        <module>geo-location-resolver</module>
+        <module>geocoder</module>
+        <module>clavin</module>
     </modules>
 </project>

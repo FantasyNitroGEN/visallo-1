@@ -87,9 +87,11 @@ public class Configuration {
     public static final String MULTIPART_LOCATION = "multipart.location";
     public static final String DEFAULT_MULTIPART_LOCATION = System.getProperty("java.io.tmpdir");
     public static final String MULTIPART_MAX_FILE_SIZE = "multipart.maxFileSize";
-    public static final long DEFAULT_MULTIPART_MAX_FILE_SIZE = 1024 * 1024 * 50;
+    // TODO надо вынести настройку размеров в конфиги, наверное...
+    //public static final long DEFAULT_MULTIPART_MAX_FILE_SIZE = 1024 * 1024 * 50;
+    public static final long DEFAULT_MULTIPART_MAX_FILE_SIZE = 1024 * 1024 * 100;
     public static final String MULTIPART_MAX_REQUEST_SIZE = "multipart.maxRequestSize";
-    public static final long DEFAULT_MULTIPART_MAX_REQUEST_SIZE = 1024 * 1024 * 100;
+    public static final long DEFAULT_MULTIPART_MAX_REQUEST_SIZE = 1024 * 1024 * 200;
     public static final String MULTIPART_FILE_SIZE_THRESHOLD = "multiPart.fileSizeThreshold";
     public static final int DEFAULT_MULTIPART_FILE_SIZE_THRESHOLD = 0;
     public static final String STATUS_REFRESH_INTERVAL_SECONDS = "status.refreshIntervalSeconds";

@@ -34,6 +34,16 @@
     
 
 
+    <!-- http://visallo.org/sample#callConnectedPhone -->
+
+    <owl:ObjectProperty rdf:about="http://visallo.org/sample#callConnectedPhone">
+        <rdfs:label xml:lang="en">Call Connected</rdfs:label>
+        <rdfs:range rdf:resource="http://visallo.org/sample#phoneCall"/>
+        <rdfs:domain rdf:resource="http://visallo.org/sample#phoneNumber"/>
+    </owl:ObjectProperty>
+
+
+
     <!-- http://visallo.org/sample#entityHasMedia -->
 
     <owl:ObjectProperty rdf:about="http://visallo.org/sample#entityHasMedia">
@@ -43,6 +53,67 @@
         <rdfs:domain rdf:resource="&owl;Thing"/>
     </owl:ObjectProperty>
     
+
+
+    <!-- http://visallo.org/sample#eventHappenedInLocation -->
+
+    <owl:ObjectProperty rdf:about="http://visallo.org/sample#eventHappenedInLocation">
+        <rdfs:label xml:lang="en">Happened In</rdfs:label>
+        <rdfs:domain rdf:resource="http://visallo.org/sample#event"/>
+        <rdfs:range rdf:resource="http://visallo.org/sample#location"/>
+    </owl:ObjectProperty>
+
+
+
+    <!-- http://visallo.org/sample#eventPlannedByOrganization -->
+
+    <owl:ObjectProperty rdf:about="http://visallo.org/sample#eventPlannedByOrganization">
+        <rdfs:label>Planned By</rdfs:label>
+        <rdfs:domain rdf:resource="http://visallo.org/sample#event"/>
+        <rdfs:range rdf:resource="http://visallo.org/sample#organization"/>
+    </owl:ObjectProperty>
+
+
+
+    <!-- http://visallo.org/sample#hasEmailAddress -->
+
+    <owl:ObjectProperty rdf:about="http://visallo.org/sample#hasEmailAddress">
+        <rdfs:label xml:lang="en">Has Email Address</rdfs:label>
+        <rdfs:range rdf:resource="http://visallo.org/sample#emailAddress"/>
+        <rdfs:domain rdf:resource="http://visallo.org/sample#organization"/>
+        <rdfs:domain rdf:resource="http://visallo.org/sample#person"/>
+    </owl:ObjectProperty>
+
+
+
+    <!-- http://visallo.org/sample#organizationHasKeyLeader -->
+
+    <owl:ObjectProperty rdf:about="http://visallo.org/sample#organizationHasKeyLeader">
+        <rdfs:label xml:lang="en">Has Key Leader</rdfs:label>
+        <rdfs:domain rdf:resource="http://visallo.org/sample#organization"/>
+        <rdfs:range rdf:resource="http://visallo.org/sample#person"/>
+    </owl:ObjectProperty>
+
+
+
+    <!-- http://visallo.org/sample#organizationHasOfficeAtLocation -->
+
+    <owl:ObjectProperty rdf:about="http://visallo.org/sample#organizationHasOfficeAtLocation">
+        <rdfs:label xml:lang="en">Has Office At</rdfs:label>
+        <rdfs:range rdf:resource="http://visallo.org/sample#location"/>
+        <rdfs:domain rdf:resource="http://visallo.org/sample#organization"/>
+    </owl:ObjectProperty>
+
+
+
+    <!-- http://visallo.org/sample#organizationHasPhoneNumber -->
+
+    <owl:ObjectProperty rdf:about="http://visallo.org/sample#organizationHasPhoneNumber">
+        <rdfs:label xml:lang="en">Has Phone Number</rdfs:label>
+        <rdfs:domain rdf:resource="http://visallo.org/sample#organization"/>
+        <rdfs:range rdf:resource="http://visallo.org/sample#phoneNumber"/>
+    </owl:ObjectProperty>
+
 
 
     <!-- http://visallo.org/sample#hasEntity -->
@@ -97,6 +168,57 @@
      -->
 
     
+
+
+    <!-- http://visallo.org/sample#abbreviation -->
+
+    <owl:DatatypeProperty rdf:about="http://visallo.org/sample#abbreviation">
+        <rdfs:label xml:lang="en">Abbreviation</rdfs:label>
+        <visallo:textIndexHints>FULL_TEXT,EXACT_MATCH</visallo:textIndexHints>
+        <rdfs:domain rdf:resource="http://visallo.org/sample#organization"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+
+
+
+    <!-- http://visallo.org/sample#alias -->
+
+    <owl:DatatypeProperty rdf:about="http://visallo.org/sample#alias">
+        <rdfs:label xml:lang="en">Alias</rdfs:label>
+        <visallo:textIndexHints>FULL_TEXT,EXACT_MATCH</visallo:textIndexHints>
+        <rdfs:domain rdf:resource="http://visallo.org/sample#person"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+
+
+
+    <!-- http://visallo.org/sample#eyecolor -->
+
+    <owl:DatatypeProperty rdf:about="http://visallo.org/sample#eyecolor">
+        <rdfs:label xml:lang="en">Eye Color</rdfs:label>
+        <visallo:propertyGroup xml:lang="en">Physical Characteristics</visallo:propertyGroup>
+        <rdfs:domain rdf:resource="http://visallo.org/sample#person"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+
+
+
+    <!-- http://visallo.org/sample#gender -->
+
+    <owl:DatatypeProperty rdf:about="http://visallo.org/sample#gender">
+        <rdfs:label xml:lang="en">Gender</rdfs:label>
+        <visallo:possibleValues xml:lang="en">
+        {
+            &quot;M&quot;: &quot;Male&quot;,
+            &quot;F&quot;: &quot;Female&quot;
+        }
+        </visallo:possibleValues>
+        <visallo:textIndexHints>EXACT_MATCH</visallo:textIndexHints>
+        <visallo:propertyGroup xml:lang="en">Physical Characteristics</visallo:propertyGroup>
+        <rdfs:domain rdf:resource="http://visallo.org/sample#person"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+
 
 
     <!-- http://visallo.org/sample#clockwiseRotation -->
@@ -163,6 +285,9 @@
         <visallo:intent xml:lang="en">media.duration</visallo:intent>
         <visallo:intent xml:lang="en">videoDuration</visallo:intent>
         <rdfs:domain rdf:resource="http://visallo.org/sample#raw"/>
+        <rdfs:domain rdf:resource="http://visallo.org/dev#audio"/>
+        <rdfs:domain rdf:resource="http://visallo.org/dev#phoneCall"/>
+        <rdfs:domain rdf:resource="http://visallo.org/dev#video"/>
         <rdfs:range rdf:resource="&xsd;double"/>
     </owl:DatatypeProperty>
     
@@ -290,6 +415,17 @@
     
 
 
+    <!-- http://visallo.org/sample#address -->
+
+    <owl:Class rdf:about="http://visallo.org/sample#address">
+        <rdfs:label xml:lang="en">Address</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://visallo.org/sample#location"/>
+        <visallo:glyphIconFileName xml:lang="en">glyphicons_020_home@2x.png</visallo:glyphIconFileName>
+        <visallo:color xml:lang="en">rgb(219, 63, 219)</visallo:color>
+    </owl:Class>
+
+
+
     <!-- http://visallo.org/sample#audio -->
 
     <owl:Class rdf:about="http://visallo.org/sample#audio">
@@ -317,6 +453,7 @@
     <owl:Class rdf:about="http://visallo.org/sample#document">
         <rdfs:label xml:lang="en">Document</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://visallo.org/sample#raw"/>
+        <visallo:subtitleFormula xml:lang="en"> prop(&apos;http://visallo.org#author&apos;) || &apos;&apos; </visallo:subtitleFormula>
         <visallo:intent>document</visallo:intent>
         <visallo:displayType xml:lang="en">document</visallo:displayType>
         <visallo:color xml:lang="en">rgb(28, 137, 28)</visallo:color>
@@ -335,6 +472,28 @@
         <visallo:titleFormula> prop(&apos;http://visallo.org/sample#emailAddressProp&apos;) || &apos;&apos; </visallo:titleFormula>
     </owl:Class>
     
+
+
+    <!-- http://visallo.org/sample#event -->
+
+    <owl:Class rdf:about="http://visallo.org/sample#event">
+        <rdfs:label xml:lang="en">Event</rdfs:label>
+        <visallo:glyphIconFileName xml:lang="en">glyphicons_045_calendar@2x.png</visallo:glyphIconFileName>
+        <visallo:color xml:lang="en">rgb(23, 30, 239)</visallo:color>
+    </owl:Class>
+
+
+
+    <!-- http://visallo.org/sample#phoneCall -->
+
+    <owl:Class rdf:about="http://visallo.org/sample#phoneCall">
+        <rdfs:label xml:lang="en">Phone Call</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://visallo.org/sample#event"/>
+        <visallo:subtitleFormula xml:lang="en"> prop(&apos;http://visallo.org/sample#duration&apos;) || &apos;&apos; </visallo:subtitleFormula>
+        <visallo:glyphIconFileName xml:lang="en">glyphicons_164_iphone_transfer@2x.png</visallo:glyphIconFileName>
+        <visallo:color xml:lang="en">rgb(225, 225, 24)</visallo:color>
+    </owl:Class>
+
 
 
     <!-- http://visallo.org/sample#image -->
@@ -358,7 +517,89 @@
         <visallo:glyphIconFileName xml:lang="en">location.png</visallo:glyphIconFileName>
         <visallo:color xml:lang="en">rgb(160, 7, 206)</visallo:color>
     </owl:Class>
-    
+
+
+
+    <!-- http://visallo.org/sample#contactInformation -->
+
+    <owl:Class rdf:about="http://visallo.org/sample#contactInformation">
+        <rdfs:label xml:lang="en">Contact Information</rdfs:label>
+        <visallo:glyphIconFileName xml:lang="en">glyphicons_088_address_book@2x.png</visallo:glyphIconFileName>
+        <visallo:color xml:lang="en">rgb(225, 128, 0)</visallo:color>
+    </owl:Class>
+
+
+
+    <!-- http://visallo.org/sample#country -->
+
+    <owl:Class rdf:about="http://visallo.org/sample#country">
+        <rdfs:label xml:lang="en">Country</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://visallo.org/sample#location"/>
+        <visallo:intent>country</visallo:intent>
+        <visallo:glyphIconFileName xml:lang="en">country.png</visallo:glyphIconFileName>
+        <visallo:color xml:lang="en">rgb(112, 0, 112)</visallo:color>
+    </owl:Class>
+
+
+
+    <!-- http://visallo.org/sample#state -->
+
+        <owl:Class rdf:about="http://visallo.org/sample#state">
+            <rdfs:label xml:lang="en">State</rdfs:label>
+            <rdfs:subClassOf rdf:resource="http://visallo.org/sample#location"/>
+            <visallo:color xml:lang="en">rgb(153, 0, 153)</visallo:color>
+            <visallo:intent>state</visallo:intent>
+            <visallo:glyphIconFileName xml:lang="en">state.png</visallo:glyphIconFileName>
+        </owl:Class>
+
+
+
+    <!-- http://visallo.org/sample#city -->
+
+        <owl:Class rdf:about="http://visallo.org/sample#city">
+            <rdfs:label xml:lang="en">City</rdfs:label>
+            <rdfs:subClassOf rdf:resource="http://visallo.org/sample#location"/>
+            <visallo:intent>city</visallo:intent>
+            <visallo:glyphIconFileName xml:lang="en">city.png</visallo:glyphIconFileName>
+            <visallo:color xml:lang="en">rgb(191, 13, 191)</visallo:color>
+        </owl:Class>
+
+
+
+    <!-- http://visallo.org/sample#nonprofit -->
+
+    <owl:Class rdf:about="http://visallo.org/sample#nonprofit">
+        <rdfs:label xml:lang="en">Non Profit</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://visallo.org/sample#company"/>
+        <visallo:glyphIconFileName xml:lang="en">glyphicons_263_bank@2x.png</visallo:glyphIconFileName>
+        <visallo:color xml:lang="en">rgb(210, 52, 32)</visallo:color>
+    </owl:Class>
+
+
+
+    <!-- http://visallo.org/sample#company -->
+
+    <owl:Class rdf:about="http://visallo.org/sample#company">
+        <rdfs:label xml:lang="en">Company</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://visallo.org/sample#organization"/>
+        <visallo:glyphIconFileName xml:lang="en">glyphicons_263_bank@2x.png</visallo:glyphIconFileName>
+        <visallo:color xml:lang="en">rgb(210, 52, 32)</visallo:color>
+    </owl:Class>
+
+
+
+    <!-- http://visallo.org/sample#organization -->
+
+    <owl:Class rdf:about="http://visallo.org/sample#organization">
+        <rdfs:label xml:lang="en">Organization</rdfs:label>
+        <visallo:subtitleFormula xml:lang="en"> prop(&apos;http://visallo.org/sample#abbreviation&apos;) || &apos;&apos; </visallo:subtitleFormula>
+        <visallo:intent>organization</visallo:intent>
+        <visallo:timeFormula xml:lang="en"> prop(&apos;http://visallo.org/sample#formationDate&apos;) || &apos;&apos; </visallo:timeFormula>
+        <visallo:glyphIconFileName xml:lang="en">organization.png</visallo:glyphIconFileName>
+        <visallo:displayType xml:lang="en">organization</visallo:displayType>
+        <visallo:color xml:lang="en">rgb(137, 39, 26)</visallo:color>
+    </owl:Class>
+
 
 
     <!-- http://visallo.org/sample#person -->
@@ -368,6 +609,7 @@
         <visallo:intent>person</visallo:intent>
         <visallo:glyphIconFileName xml:lang="en">person.png</visallo:glyphIconFileName>
         <visallo:subtitleFormula>prop(&apos;http://visallo.org/sample#dateOfBirth&apos;) || &apos;&apos;  </visallo:subtitleFormula>
+        <visallo:color xml:lang="en">rgb(28, 137, 28)</visallo:color>
     </owl:Class>
 
 

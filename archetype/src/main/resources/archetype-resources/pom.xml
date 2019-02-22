@@ -21,6 +21,15 @@
 
     <repositories>
         <repository>
+            <id>localsnapshots</id>
+            <name>localsnapshots</name>
+            <url>http://localhost:8081/repository/visallo</url>
+            <releases>
+                <enabled>false</enabled>
+            </releases>
+            <snapshots></snapshots>
+        </repository>
+        <!--<repository>
             <id>sonatype-nexus-snapshots</id>
             <name>Sonatype Nexus Snapshots</name>
             <url>https://oss.sonatype.org/content/repositories/snapshots</url>
@@ -29,7 +38,7 @@
             </releases>
             <snapshots>
             </snapshots>
-        </repository>
+        </repository>-->
     </repositories>
 
     <dependencies>

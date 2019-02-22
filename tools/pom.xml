@@ -20,6 +20,7 @@
         <module>import</module>
         <module>migrations</module>
         <module>ontology-ingest</module>
+        <module>rdf-import</module>
         <module>owl</module>
         <module>reindex</module>
         <module>run-gpw</module>

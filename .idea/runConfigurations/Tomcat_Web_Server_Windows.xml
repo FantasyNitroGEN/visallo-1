@@ -1,0 +1,18 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="Tomcat Web Server Windows" type="Application" factoryName="Application" folderName="Visallo" singleton="true">
+    <option name="ALTERNATIVE_JRE_PATH" value="1.8" />
+    <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
+    <envs>
+      <env name="VISALLO_DIR" value="$MODULE_DIR$/../.." />
+    </envs>
+    <option name="MAIN_CLASS_NAME" value="org.visallo.web.TomcatWebServer" />
+    <module name="visallo-dev-tomcat-server" />
+    <option name="PROGRAM_PARAMETERS" value="--webAppDir $MODULE_DIR$/../../web/war/src/main/webapp --port 8888 --httpsPort 8889 --keyStorePath $MODULE_DIR$/config/visallo-vm.visallo.org.jks --keyStorePassword password --trustStorePath $MODULE_DIR$/config/truststore.jks --trustStorePassword password" />
+    <option name="VM_PARAMETERS" value="-Djava.library.path=%PATH%;C:/opencv-3.4.2/build/java/x64;C:/opencv-3.4.2/build/x64/vc15/bin -Djava.awt.headless=true -Dvisallo.request.debug=true" />
+    <option name="WORKING_DIRECTORY" value="$MODULE_DIR$/../.." />
+    <shortenClasspath name="MANIFEST" />
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>

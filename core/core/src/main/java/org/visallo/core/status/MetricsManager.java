@@ -6,6 +6,9 @@ import com.codahale.metrics.Timer;
 
 public interface MetricsManager {
 
+    //TODO должен быть Deprecated, но с выдает ошибку при compile
+    String getNamePrefix(Object obj);
+
     Counter counter(String metricName);
 
     Counter counter(Object source, String name);
