@@ -68,6 +68,12 @@ public class JmxMetricsManager implements MetricsManager {
         REGISTRY.remove(metricName);
     }
 
+    @Deprecated
+    @Override
+    public String getNamePrefix(Object obj) {
+        return String.format("%s.%d.", obj.getClass().getName(), JmxMetricsManager.nextId());
+    }
+
     @Override
     public String createMetricName(Object source, String metricType, String name) {
         Class rootClass = getRootClass(source.getClass());

@@ -27,6 +27,7 @@
         <module>map-product</module>
         <module>structured-ingest</module>
         <module>table</module>
+        <module>import-export-workspaces</module>
         <module>opennlp-dictionary-extractor</module>
         <module>dev-tools</module>
     </modules>

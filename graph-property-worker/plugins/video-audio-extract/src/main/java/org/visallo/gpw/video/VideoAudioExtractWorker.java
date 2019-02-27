@@ -34,7 +34,7 @@ public class VideoAudioExtractWorker extends GraphPropertyWorker {
         File mp3File = File.createTempFile("audio_extract_", ".mp3");
         try {
             processRunner.execute(
-                    "C:\\ffmpeg-hi\\ffmpeg",
+                    "ffmpeg",
                     new String[]{
                             "-i", data.getLocalFile().getAbsolutePath(),
                             "-vn",

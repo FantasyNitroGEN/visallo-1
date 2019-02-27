@@ -34,7 +34,7 @@ public class CCExtractorGraphPropertyWorker extends GraphPropertyWorker {
         // хардкоженный путь под винду. ccextractor заменено на ccextractorwin, также под винду
         try {
             processRunner.execute(
-                    "C:\\ccextractor\\ccextractorwin",
+                    "ccextractor",
                     new String[]{
                             "-o", ccFile.getAbsolutePath(),
                             "-in=mp4",

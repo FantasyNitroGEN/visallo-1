@@ -49,7 +49,7 @@ public class VideoMp4EncodingWorker extends GraphPropertyWorker {
     }
 
     private void verifyFfmpegFeature(VerifyResults verifyResults) {
-        String output = processRunner.executeToString("C:\\ffmpeg-hi\\ffmpeg", new String[]{"-version"});
+        String output = processRunner.executeToString("ffmpeg", new String[]{"-version"});
         if (!output.contains("enable-libx264")) {
             verifyResults.addFailure(new VerifyResults.GenericFailure("ffmpeg not compiled with 'libx264'"));
         }
@@ -72,7 +72,7 @@ public class VideoMp4EncodingWorker extends GraphPropertyWorker {
         // C:\ffmpeg-hi\ffmpeg вместо просто ffmpeg. Хардлинк для винды
         try {
             processRunner.execute(
-                    "C:\\ffmpeg-hi\\ffmpeg",
+                    "ffmpeg",
                     ffmpegOptionsArray,
                     null,
                     data.getLocalFile().getAbsolutePath() + ": "
@@ -80,7 +80,7 @@ public class VideoMp4EncodingWorker extends GraphPropertyWorker {
 
             //http://einguste.hatenablog.com/entry/2013/11/14/224537
             processRunner.execute(
-                    "C:\\ffmpeg-hi\\qt-faststart",
+                    "qt-faststart",
                     new String[]{
                             mp4File.getAbsolutePath(),
                             mp4RelocatedFile.getAbsolutePath()

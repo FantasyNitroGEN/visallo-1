@@ -36,7 +36,7 @@ public class AudioMp4EncodingWorker extends GraphPropertyWorker {
             // временно полный путь до ffmpeg, переделать
             // https://github.com/jb-alvarado/media-autobuild_suite - для установки на Windows libfdk_aac
             processRunner.execute(
-                    "C:\\ffmpeg-hi\\ffmpeg",
+                    "ffmpeg",
                     new String[]{
                             "-y", // overwrite output files
                             "-i", data.getLocalFile().getAbsolutePath(),

@@ -12,13 +12,14 @@ import org.visallo.core.user.User;
 
 public class DictionaryEntryRepository {
     private static final String VISIBILITY_STRING = "";
-    private final SimpleOrmSession simpleOrmSession;
-    //private final InMemorySimpleOrmSession simpleOrmSession;
+    //private final SimpleOrmSession simpleOrmSession;
+    private final InMemorySimpleOrmSession simpleOrmSession;
     private final SimpleOrmContextProvider simpleOrmContextProvider;
 
     @Inject
     public DictionaryEntryRepository(
-            SimpleOrmSession simpleOrmSession,
+            //SimpleOrmSession simpleOrmSession,
+            InMemorySimpleOrmSession simpleOrmSession,
             SimpleOrmContextProvider simpleOrmContextProvider
     ) {
         this.simpleOrmSession = simpleOrmSession;

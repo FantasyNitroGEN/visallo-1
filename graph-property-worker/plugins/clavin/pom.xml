@@ -16,8 +16,8 @@
     <properties>
         <!--<clavin.version>1.1.0-Altamira</clavin.version>-->
         <!--<clavin.version>2.1.0</clavin.version>-->
-        <clavin.version>1.1.1-Altamira-SNAPSHOT</clavin.version>
-        <lucene.version>4.7.0</lucene.version>
+        <clavin.version>1.1.6-Altamira-SNAPSHOT</clavin.version>
+        <lucene.version>6.6.0</lucene.version>
     </properties>
 
     <dependencies>

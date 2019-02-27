@@ -35,7 +35,7 @@ public class AudioOggEncodingWorker extends GraphPropertyWorker {
         try {
             //тоже временно путь полный под винду
             processRunner.execute(
-                    "C:\\ffmpeg-hi\\ffmpeg",
+                    "ffmpeg",
                     new String[]{
                             "-y", // overwrite output files
                             "-i", data.getLocalFile().getAbsolutePath(),

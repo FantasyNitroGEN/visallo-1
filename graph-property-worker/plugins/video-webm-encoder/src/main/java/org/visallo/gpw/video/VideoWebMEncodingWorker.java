@@ -66,10 +66,9 @@ public class VideoWebMEncodingWorker extends GraphPropertyWorker {
     public void execute(InputStream in, GraphPropertyWorkData data) throws Exception {
         File webmFile = File.createTempFile("encode_webm_", ".webm");
         String[] ffmpegOptionsArray = prepareFFMPEGOptions(data, webmFile);
-        // C:\ffmpeg-hi\ffmpeg вместо просто ffmpeg. Хардлинк для винды
         try {
             processRunner.execute(
-                    "C:\\ffmpeg\\bin\\ffmpeg",
+                    "ffmpeg",
                     ffmpegOptionsArray,
                     null,
                     data.getLocalFile().getAbsolutePath() + ": "

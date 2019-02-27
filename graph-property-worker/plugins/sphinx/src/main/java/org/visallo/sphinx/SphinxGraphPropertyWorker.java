@@ -62,24 +62,30 @@ public class SphinxGraphPropertyWorker extends GraphPropertyWorker {
     private VideoTranscript extractTranscriptFromAudio(File localFile) throws IOException, InterruptedException {
         checkNotNull(localFile, "localFile cannot be null");
         File wavFile = File.createTempFile("encode_wav_", ".wav");
+        File wavFileNoSilenceBit = File.createTempFile("encode_wav_no_silence_bit_", ".wav");
         File wavFileNoSilence = File.createTempFile("encode_wav_no_silence_", ".wav");
         File wavFileNoHeaders = File.createTempFile("encode_wav_noheader_", ".wav");
 
         try {
             convertAudioTo16bit1Ch(localFile, wavFile);
-            removeSilenceFromBeginning(wavFile, wavFileNoSilence);
+            convertWavtoWav(wavFile, wavFileNoSilenceBit);
+            removeSilenceFromBeginning(wavFileNoSilenceBit, wavFileNoSilence);
+
 
             long silenceFileSizeDiff = wavFile.length() - wavFileNoSilence.length();
             double timeOffsetInSec = (double) silenceFileSizeDiff / BYTES_PER_SAMPLE / SAMPLES_PER_SECOND;
 
-            WavFileUtil.fixWavHeaders(wavFileNoSilence, wavFileNoHeaders); // TODO patch sphinx to handle headers correctly
+            //WavFileUtil.fixWavHeaders(wavFileNoSilence, wavFileNoHeaders); // TODO patch sphinx to handle headers correctly
 
-            String sphinxOutput = runSphinx(wavFileNoHeaders);
+            String sphinxOutput = runSphinx(wavFileNoSilence);
 
             return SphinxOutputParser.parse(sphinxOutput, timeOffsetInSec);
         } finally {
             if (!wavFile.delete()) {
                 LOGGER.warn("Could not delete wav file: %s", wavFile.getAbsolutePath());
+            }
+            if (!wavFileNoSilenceBit.delete()) {
+                LOGGER.warn("Could not delete wav no silence bit file: %s", wavFileNoSilenceBit.getAbsolutePath());
             }
             if (!wavFileNoSilence.delete()) {
                 LOGGER.warn("Could not delete wav no silence file: %s", wavFileNoSilence.getAbsolutePath());
@@ -93,13 +99,12 @@ public class SphinxGraphPropertyWorker extends GraphPropertyWorker {
     private String runSphinx(File inFile) throws IOException, InterruptedException {
         checkNotNull(inFile, "inFile cannot be null");
         ByteArrayOutputStream out = new ByteArrayOutputStream();
-        //hmm и dict тоже пока захардкожены под винду
         try {
             processRunner.execute(
-                    "C:\\pocketsphinx\\bin\\Release\\x64\\pocketsphinx_continuous",
+                    "pocketsphinx_continuous",
                     new String[]{
                             "-infile", inFile.getAbsolutePath(),
-                            "-time", "true", "-hmm C:\\pocketsphinx\\model\\en-us\\en-us -lm C:\\pocketsphinx\\model\\en-us\\en-us.lm.bin -dict C:\\pocketsphinx\\model\\en-us\\cmudict-en-us.dict"
+                            "-time", "true"
                     },
                     out,
                     inFile.getAbsolutePath() + ": "
@@ -114,12 +119,32 @@ public class SphinxGraphPropertyWorker extends GraphPropertyWorker {
         checkNotNull(inFile, "inFile cannot be null");
         checkNotNull(outFile, "outFile cannot be null");
         processRunner.execute(
-                "C:\\ffmpeg-hi\\sox",
+                "sox",
                 new String[]{
                         inFile.getAbsolutePath(),
                         outFile.getAbsolutePath(),
                         "silence", "1", "0.1", "1%", // remove silence from beginning. at least 0.1s of less than 1% volume
                         "pad", "1", "0" // pad 1 second of silence to beginning
+                },
+                null,
+                inFile.getAbsolutePath() + ": "
+        );
+    }
+    // first try to properly convert
+    private void convertWavtoWav (File inFile, File outFile) throws IOException, InterruptedException{
+        checkNotNull(inFile, "inFile cannot be null");
+        checkNotNull(outFile, "outFile cannot be null");
+        processRunner.execute(
+                "sox",
+                new String[]{
+                        inFile.getAbsolutePath(),
+                        "-r",
+                        Long.toString(SAMPLES_PER_SECOND),
+                        "-c",
+                        "1",
+                        "-b",
+                        "16",
+                        outFile.getAbsolutePath()
                 },
                 null,
                 inFile.getAbsolutePath() + ": "
@@ -131,7 +156,7 @@ public class SphinxGraphPropertyWorker extends GraphPropertyWorker {
         checkNotNull(outputFile, "outputFile cannot be null");
         //тоже хардкод пути
         processRunner.execute(
-                "C:\\ffmpeg-hi\\ffmpeg",
+                "ffmpeg",
                 new String[]{
                         "-y", // overwrite output files
                         "-i", inputFile.getAbsolutePath(),

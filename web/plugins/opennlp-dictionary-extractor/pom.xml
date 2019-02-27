@@ -18,7 +18,6 @@
 
     <artifactId>visallo-web-opennlp-dictionary-extractor</artifactId>
     <name>Visallo: Web: Plugin: OpenNLP Dictionary Extractor</name>
-    <version>4.1-SNAPSHOT</version>
 
     <dependencies>
         <dependency>

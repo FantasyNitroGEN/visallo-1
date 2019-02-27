@@ -1,7 +1,5 @@
 package org.visallo.opennlpDictionary.web;
 
-//import com.v5analytics.webster.Handler;
-//import com.v5analytics.webster.handlers.StaticResourceHandler;
 import org.visallo.webster.Handler;
 import org.visallo.webster.handlers.StaticResourceHandler;
 import org.visallo.core.model.Description;

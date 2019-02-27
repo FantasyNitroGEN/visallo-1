@@ -149,11 +149,11 @@
             <artifactId>visallo-gpw-audio-metadata</artifactId>
             <version>${project.version}</version>
         </dependency>
-        <!--<dependency>
+        <dependency>
             <groupId>org.visallo</groupId>
             <artifactId>visallo-gpw-sphinx</artifactId>
             <version>${project.version}</version>
-        </dependency>-->
+        </dependency>
         <dependency>
             <groupId>org.visallo</groupId>
             <artifactId>visallo-gpw-audio-mp4-encoder</artifactId>
@@ -224,12 +224,12 @@
             <artifactId>visallo-gpw-drewnoakes-image-metadata-extractor</artifactId>
             <version>${project.version}</version>
         </dependency>
-        <!--<dependency>
+        <dependency>
             <groupId>org.visallo</groupId>
             <artifactId>visallo-gpw-opennlp-me-extractor</artifactId>
             <version>${project.version}</version>
         </dependency>
-        <dependency>
+        <!--<dependency>
             <groupId>org.visallo</groupId>
             <artifactId>visallo-web-opennlp-dictionary-extractor</artifactId>
             <version>${project.version}</version>
@@ -239,13 +239,13 @@
             <artifactId>visallo-gpw-opennlp-dictionary-extractor</artifactId>
             <version>${project.version}</version>
         </dependency>-->
-        <!--<dependency>
+        <dependency>
             <groupId>org.visallo</groupId>
             <artifactId>visallo-gpw-clavin</artifactId>
             <version>${project.version}</version>
         </dependency>
 
-        <dependency>
+        <!--<dependency>
             <groupId>org.visallo</groupId>
             <artifactId>visallo-gpw-translate</artifactId>
             <version>${project.version}</version>

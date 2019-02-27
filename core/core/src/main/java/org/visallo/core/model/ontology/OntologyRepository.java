@@ -57,6 +57,7 @@ public interface OntologyRepository {
 
     boolean hasRelationshipByIRI(String relationshipIRI, String workspaceId);
 
+
     Iterable<Concept> getConceptsWithProperties(String workspaceId);
 
     Concept getRootConcept(String workspaceId);

@@ -46,8 +46,9 @@ public class TesseractGraphPropertyWorker extends GraphPropertyWorker {
         if (dataPath != null) {
             tesseract.setDatapath(dataPath);
         }
-        tesseract.setOcrEngineMode(2);
-        tesseract.setPageSegMode(1);
+        tesseract.setLanguage("eng");
+        //tesseract.setOcrEngineMode(2);
+        //tesseract.setPageSegMode(1);
     }
 
     @Override

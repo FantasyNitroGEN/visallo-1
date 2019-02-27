@@ -1,9 +1,11 @@
 package org.visallo.clavin;
 
+import com.bericotech.clavin.ClavinException;
+import com.bericotech.clavin.GeoParser;
+import com.bericotech.clavin.GeoParserFactory;
 import com.bericotech.clavin.extractor.LocationOccurrence;
-import com.bericotech.clavin.gazetteer.FeatureClass;
-import com.bericotech.clavin.gazetteer.FeatureCode;
-import com.bericotech.clavin.gazetteer.GeoName;
+import com.bericotech.clavin.gazetteer.*;
+import com.bericotech.clavin.resolver.ClavinLocationResolver;
 import com.bericotech.clavin.resolver.LuceneLocationResolver;
 import com.bericotech.clavin.resolver.ResolvedLocation;
 import com.google.inject.Inject;
@@ -82,7 +84,8 @@ public class ClavinTermMentionFilter extends TermMentionFilter {
 
     private static final String CONFIG_EXCLUDED_IRI_PREFIX = "clavin.excludeIri";
 
-    private LuceneLocationResolver resolver;
+    private ClavinLocationResolver clavinLocationResolver;
+    //private LuceneLocationResolver resolver;
     private boolean fuzzy;
     private Set<String> targetConcepts;
     private OntologyRepository ontologyRepository;
@@ -91,8 +94,12 @@ public class ClavinTermMentionFilter extends TermMentionFilter {
     private String cityIri;
     private String geoLocationIri;
     private User user;
+    private Authorizations authorizations;
     private String artifactHasEntityIri;
     private WorkspaceRepository workspaceRepository;
+    //private Gazetteer gazetteer;
+    GeoParser geoParser;
+    int[] conf;
 
     @Override
     public void prepare(TermMentionFilterPrepareData termMentionFilterPrepareData) throws Exception {
@@ -102,8 +109,9 @@ public class ClavinTermMentionFilter extends TermMentionFilter {
         prepareIris();
         prepareClavinLuceneIndex(getConfiguration());
         prepareFuzzy(getConfiguration());
-        prepareTargetConcepts(getConfiguration());
+
         user = termMentionFilterPrepareData.getUser();
+        authorizations = termMentionFilterPrepareData.getAuthorizations();
     }
 
     public void prepareTargetConcepts(Configuration config) {
@@ -144,7 +152,7 @@ public class ClavinTermMentionFilter extends TermMentionFilter {
         }
     }
 
-    public void prepareClavinLuceneIndex(Configuration config) throws IOException, ParseException {
+    public int[] prepareClavinLuceneIndex(Configuration config) throws IOException, ParseException, ClavinException {
         String idxDirPath = config.get(CLAVIN_INDEX_DIRECTORY, null);
         if (idxDirPath == null || idxDirPath.trim().isEmpty()) {
             throw new IllegalArgumentException(String.format("%s must be configured.", CLAVIN_INDEX_DIRECTORY));
@@ -167,7 +175,10 @@ public class ClavinTermMentionFilter extends TermMentionFilter {
             maxContextWindow = DEFAULT_MAX_CONTENT_WINDOW;
         }
 
-        resolver = new LuceneLocationResolver(indexDirectory, maxHitDepth, maxContextWindow);
+        //resolver = new LuceneLocationResolver(indexDirectory, maxHitDepth, maxContextWindow);
+        clavinLocationResolver = new ClavinLocationResolver(new LuceneGazetteer(indexDirectory));
+        //geoParser = GeoParserFactory.getDefault(String.valueOf(indexDirectory), maxHitDepth, maxContextWindow, fuzzy);
+        return conf= new int[]{maxHitDepth, maxContextWindow};
     }
 
     private void prepareIris() {
@@ -179,10 +190,12 @@ public class ClavinTermMentionFilter extends TermMentionFilter {
     }
 
     @Override
-    public void apply(Vertex outVertex, Iterable<Vertex> termMentions, Authorizations authorizations) throws IOException, ParseException {
+    public void apply(Vertex outVertex, Iterable<Vertex> termMentions, Authorizations authorizations) throws IOException, ParseException, ClavinException {
+        prepareTargetConcepts(getConfiguration());
+
         List<LocationOccurrence> locationOccurrences = getLocationOccurrencesFromTermMentions(termMentions);
         LOGGER.info("Found %d Locations in %d terms.", locationOccurrences.size(), count(termMentions));
-        List<ResolvedLocation> resolvedLocationNames = resolver.resolveLocations(locationOccurrences, fuzzy);
+        List<ResolvedLocation> resolvedLocationNames = clavinLocationResolver.resolveLocations(locationOccurrences, conf[0], conf[1], fuzzy);
         LOGGER.info("Resolved %d Locations", resolvedLocationNames.size());
 
         if (resolvedLocationNames.isEmpty()) {

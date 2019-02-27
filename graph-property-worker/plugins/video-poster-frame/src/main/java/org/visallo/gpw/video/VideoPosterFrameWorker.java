@@ -53,7 +53,7 @@ public class VideoPosterFrameWorker extends GraphPropertyWorker {
         String[] ffmpegOptionsArray = prepareFFMPEGOptions(data, videoPosterFrameFile);
         try {
             processRunner.execute(
-                    "C:\\ffmpeg-hi\\ffmpeg",
+                    "ffmpeg",
                     ffmpegOptionsArray,
                     null,
                     data.getLocalFile().getAbsolutePath() + ": "

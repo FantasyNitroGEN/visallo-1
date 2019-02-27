@@ -43,7 +43,6 @@ import static org.visallo.core.model.ontology.OntologyRepository.PUBLIC;
 public class OpenNLPMaximumEntropyExtractorGraphPropertyWorker extends GraphPropertyWorker {
     private static final VisalloLogger LOGGER = VisalloLoggerFactory.getLogger(OpenNLPMaximumEntropyExtractorGraphPropertyWorker.class);
     private static final int NEW_LINE_CHARACTER_LENGTH = 1;
-    //хардкод под винду
     //private static final String PATH_PREFIX = "/" + OpenNLPMaximumEntropyExtractorGraphPropertyWorker.class.getName();
     private static final String PATH_PREFIX = "termextraction.opennlp.pathPrefix";
     private final FileSystemRepository fileSystemRepository;

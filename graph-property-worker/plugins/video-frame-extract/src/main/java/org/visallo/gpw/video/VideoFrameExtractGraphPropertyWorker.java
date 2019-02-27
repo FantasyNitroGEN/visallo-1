@@ -119,7 +119,7 @@ public class VideoFrameExtractGraphPropertyWorker extends GraphPropertyWorker {
     private void extractFrames(File videoFileName, File outDir, double framesPerSecondToExtract, int videoRotation) throws IOException, InterruptedException {
         String[] ffmpegOptionsArray = prepareFFMPEGOptions(videoFileName, outDir, framesPerSecondToExtract, videoRotation);
         processRunner.execute(
-                "C:\\ffmpeg-hi\\ffmpeg",
+                "ffmpeg",
                 ffmpegOptionsArray,
                 null,
                 videoFileName.getAbsolutePath() + ": "
