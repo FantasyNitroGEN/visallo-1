@@ -26,6 +26,7 @@ import org.visallo.core.model.user.UserRepository;
 import org.visallo.core.model.workspace.Workspace;
 import org.visallo.core.model.workspace.WorkspaceRepository;
 import org.visallo.core.model.workspace.WorkspaceUser;
+import org.visallo.core.status.model.Status;
 import org.visallo.core.user.SystemUser;
 import org.visallo.core.user.User;
 import org.visallo.core.util.ClientApiConverter;
@@ -1129,9 +1130,11 @@ public abstract class WorkQueueRepository {
         return json;
     }
 
-    public final void pushOnQueue(
+    //removed final
+    @Deprecated
+    public void pushOnQueue(
             String queueName,
-            @Deprecated FlushFlag flushFlag,
+            FlushFlag flushFlag,
             JSONObject json,
             Priority priority
     ) {
@@ -1194,6 +1197,10 @@ public abstract class WorkQueueRepository {
     public abstract void unsubscribeFromBroadcastMessages(BroadcastConsumer broadcastConsumer);
 
     public abstract WorkerSpout createWorkerSpout(String queueName);
+
+    public void shutdown() {
+
+    }
 
     public void broadcastPublishVertexDelete(Vertex vertex) {
         broadcastPublish(vertex, PublishType.DELETE);
@@ -1306,6 +1313,8 @@ public abstract class WorkQueueRepository {
 
         return json;
     }
+
+    public abstract Map<String, Status> getQueuesStatus();
 
     public void setGraphPropertyRunner(GraphPropertyRunner graphPropertyRunner) {
         this.graphPropertyRunner = graphPropertyRunner;

@@ -1,4 +1,4 @@
-package org.visallo.opennlpDictionary.web;
+package org.visallo.web.opennlpDictionary;
 
 import com.google.inject.Inject;
 //import com.v5analytics.webster.ParameterizedHandler;

@@ -92,7 +92,7 @@ ${SUDO} cp \
   ${LOCAL_PERSISTENT_DIR}/opt/visallo/config/
 
 ${SUDO} cp \
-  ${DIR}/../config/log4j.xml \
+  ${DIR}/../config/log4j2.xml \
   ${DIR}/../config/visallo.properties \
   ${DIR}/../config/visallo-accumulo.properties \
   ${DIR}/../config/visallo-elasticsearch.properties \

@@ -1,9 +1,10 @@
-package org.visallo.opennlpDictionary.web;
+package org.visallo.web.opennlpDictionary;
 
 import com.google.inject.Inject;
 //import com.v5analytics.webster.ParameterizedHandler;
 //import com.v5analytics.webster.annotations.Handle;
 import com.v5analytics.simpleorm.InMemorySimpleOrmContext;
+import org.visallo.core.simpleorm.*;
 import org.visallo.webster.*;
 import org.visallo.webster.annotations.Handle;
 import org.json.JSONArray;
@@ -19,7 +20,7 @@ import org.visallo.opennlpDictionary.model.DictionaryEntryRepository;
 import org.visallo.core.simpleorm.SimpleOrmContextProvider;
 
 
-public class AdminDictionary implements ParameterizedHandler {
+public class    AdminDictionary implements ParameterizedHandler {
     private DictionaryEntryRepository dictionaryEntryRepository;
     private SimpleOrmContextProvider simpleOrmContextProvider;
     private InMemorySimpleOrmContext simpleOrmContext;

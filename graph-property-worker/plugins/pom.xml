@@ -45,5 +45,6 @@
         <module>geo-location-resolver</module>
         <module>geocoder</module>
         <module>clavin</module>
+        <module>geoip</module>
     </modules>
 </project>

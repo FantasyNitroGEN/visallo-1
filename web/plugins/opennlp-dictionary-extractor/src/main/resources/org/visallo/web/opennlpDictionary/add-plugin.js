@@ -1,7 +1,7 @@
 define([
     'flight/lib/component',
     'configuration/admin/utils/withFormHelpers',
-    'hbs!org/visallo/opennlpDictionary/web/templates/add',
+    'hbs!org/visallo/web/opennlpDictionary/templates/add',
     'util/formatters',
     'util/withDataRequest',
     'd3'

@@ -19,5 +19,9 @@
         <module>model-vertexium</module>
         <module>model-vertexium-inmemory</module>
         <module>model-vertexium-test</module>
+        <module>model-vertexium-accumulo</module>
+        <module>model-storage-hadoop</module>
+        <module>model-queue-rabbitmq</module>
+        <module>model-coordination-zookeeper</module>
     </modules>
 </project>

@@ -5,6 +5,7 @@ import org.vertexium.Graph;
 import org.visallo.core.config.Configuration;
 import org.visallo.core.ingest.WorkerSpout;
 import org.visallo.core.model.WorkQueueNames;
+import org.visallo.core.status.model.Status;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -81,6 +82,11 @@ public class TestWorkQueueRepository extends WorkQueueRepository {
 
     @Override
     public WorkerSpout createWorkerSpout(String queueName) {
+        return null;
+    }
+
+    @Override
+    public Map<String, Status> getQueuesStatus() {
         return null;
     }
 }

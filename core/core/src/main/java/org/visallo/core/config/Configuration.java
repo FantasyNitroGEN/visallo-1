@@ -77,6 +77,8 @@ public class Configuration {
     public static final String DEFAULT_CACHE_REPOSITORY_PATH_PREFIX = "/visallo/cache";
     public static final String USER_SESSION_COUNTER_PATH_PREFIX = "userSessionCounter.pathPrefix";
     public static final String DEFAULT_TIME_ZONE = "default.timeZone";
+    // пришлось вернуть
+    public static final String RABBITMQ_PREFETCH_COUNT = "rabbitmq.prefetch.count";
     public static final String QUEUE_PREFIX = "queue.prefix";
     public static final String STATUS_ZK_PATH = "status.zkPathPrefix";
     public static final String DEFAULT_STATUS_ZK_PATH = "/visallo/status";

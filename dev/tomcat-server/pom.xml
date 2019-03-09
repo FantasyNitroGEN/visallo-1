@@ -229,7 +229,7 @@
             <artifactId>visallo-gpw-opennlp-me-extractor</artifactId>
             <version>${project.version}</version>
         </dependency>
-        <!--<dependency>
+<!--        <dependency>
             <groupId>org.visallo</groupId>
             <artifactId>visallo-web-opennlp-dictionary-extractor</artifactId>
             <version>${project.version}</version>

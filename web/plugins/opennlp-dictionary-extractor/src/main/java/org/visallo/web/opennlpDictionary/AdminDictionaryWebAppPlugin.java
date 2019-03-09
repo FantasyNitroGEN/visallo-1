@@ -1,7 +1,6 @@
-package org.visallo.opennlpDictionary.web;
+package org.visallo.web.opennlpDictionary;
 
 import org.visallo.webster.Handler;
-import org.visallo.webster.handlers.StaticResourceHandler;
 import org.visallo.core.model.Description;
 import org.visallo.core.model.Name;
 import org.visallo.web.VisalloCsrfHandler;
@@ -19,11 +18,11 @@ public class AdminDictionaryWebAppPlugin implements WebAppPlugin {
         Class<? extends Handler> authenticationHandlerClass = authenticationHandler.getClass();
         Class<? extends Handler> csrfHandlerClass = VisalloCsrfHandler.class;
 
-        app.registerJavaScriptTemplate("/org/visallo/opennlpDictionary/web/templates/add.hbs");
+        app.registerJavaScriptTemplate("/org/visallo/web/opennlpDictionary/templates/add.hbs");
 
-        app.registerJavaScript("/org/visallo/opennlpDictionary/web/plugin.js");
-        app.registerJavaScript("/org/visallo/opennlpDictionary/web/list-plugin.js", false);
-        app.registerJavaScript("/org/visallo/opennlpDictionary/web/add-plugin.js", false);
+        app.registerJavaScript("/org/visallo/web/opennlpDictionary/plugin.js");
+        app.registerJavaScript("/org/visallo/web/opennlpDictionary/list-plugin.js", false);
+        app.registerJavaScript("/org/visallo/web/opennlpDictionary/add-plugin.js", false);
 
         app.get("/admin/dictionary", authenticationHandlerClass, csrfHandlerClass, AdminPrivilegeFilter.class, AdminDictionary.class);
         app.get("/admin/dictionary/concept", authenticationHandlerClass, csrfHandlerClass, AdminPrivilegeFilter.class, AdminDictionaryByConcept.class);
